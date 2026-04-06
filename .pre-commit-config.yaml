@@ -46,7 +46,15 @@ exclude: |
       src/systemc/ext/.*|
       src/systemc/tests/.*/.*|
       src/python/m5/ext/pyfdt/.*|
-      tests/.*/ref/.*
+      tests/.*/ref/.*|
+      venv/.*|
+      src/arch/riscv/BNRV/verilated\.cpp|
+      src/arch/riscv/BNRV/verilated_.*\.cpp|
+      src/arch/riscv/BNRV/.*\.h|
+      BitNetKernel.c|
+      BitNetBaseline.c|
+      BitNetKernel.c|
+      src/arch/riscv/isa/includes.isa
     )$
 
 default_stages: [pre-commit]

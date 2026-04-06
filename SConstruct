@@ -1006,3 +1006,13 @@ for variant_path in variant_paths:
                duplicate=GetOption('duplicate_sources'))
 
 atexit.register(summarize_warnings)
+
+verilator_inc = '/usr/share/verilator/include'
+
+# 2. 将路径添加到当前编译环境
+env.Append(CPPPATH=[verilator_inc, verilator_inc + '/vltstd'])
+
+# 3. 正常添加源文件
+sources = Glob('*.cpp')
+for src in sources:
+    Source(src)

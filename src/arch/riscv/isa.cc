@@ -620,7 +620,6 @@ ISA::readMiscReg(RegIndex idx)
                 default:
                     status.mpp = (misa.rvu) ? PRV_U : PRV_M;
             }
-
             setMiscRegNoEffect(idx, status);
             return readMiscRegNoEffect(idx);
         }

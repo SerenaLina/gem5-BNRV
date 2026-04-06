@@ -534,6 +534,7 @@ decode QUADRANT default Unknown::unknown() {
             }
         }
     }
+    // the low 2-bits
     0x3: decode OPCODE5 {
         0x00: decode FUNCT3 {
             format Load {
@@ -1330,6 +1331,15 @@ decode QUADRANT default Unknown::unknown() {
                 }}, {{
                     EA = Rs1 + Vs2_ud[vs2ElemIdx];
                 }}, inst_flags=SimdIndexedLoadOp);
+            }
+        }
+        // added SUM4.decode according funct3
+        0x02: decode FUNCT3 {
+            format BNOP {
+                0x0: bnsum4({{
+                    auto raw_result = invoke_bnsum4(Rs1_uw, Rs2_uw);
+                    Rd_sw = (raw_result);
+                }},IsInteger);
             }
         }
 

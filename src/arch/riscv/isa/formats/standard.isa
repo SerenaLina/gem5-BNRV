@@ -467,6 +467,15 @@ def format IOp(code, imm_type='int64_t', imm_code='imm = sext<12>(IMM12);',
     exec_output = ImmExecute.subst(iop)
 }};
 
+// defined BNRV
+def format BNOP(code, *opt_flags){{
+    iop = InstObjParams(name, Name, 'RegOp', code, opt_flags)
+    header_output = BasicDeclare.subst(iop)
+    decoder_output = BasicConstructor.subst(iop)
+    decode_block = BasicDecode.subst(iop)
+    exec_output = BasicExecute.subst(iop)
+}};
+
 def format FenceOp(code, imm_type='int64_t', *opt_flags) {{
     regs = ['destRegIdx(0)','srcRegIdx(0)']
     iop = InstObjParams(name, Name, 'ImmOp<%s>' % imm_type,
